@@ -16,6 +16,7 @@ namespace Self_Improve_eCommerce.IServices
         Task<bool> DeleteProductByIdAsync(int productId);
         Task<int> AddProductAsync(ProductRequestModel requestProduct);
         Task<bool> UpdateProductPriceAsync(int productId, float price);
+        Task<bool> UpdateProductDescriptionAsync(int productId, string description);
 
         
     }

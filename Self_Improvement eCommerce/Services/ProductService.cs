@@ -72,6 +72,21 @@ namespace Self_Improve_eCommerce.Services
             return await ctx.Products.Where(p => p.Name == productName).FirstOrDefaultAsync();
         }
 
+        public async Task<bool> UpdateProductDescriptionAsync(int productId, string description)
+        {
+            var product = await ctx.Products.Where(p => p.Id == productId).FirstOrDefaultAsync();
+
+            if (product != null)
+            {
+                product.Description = description;
+                await this.ctx.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+
+        }
+
         public async Task<bool> UpdateProductPriceAsync(int productId, float price)
         {
             var product = await ctx.Products.Where(p => p.Id == productId).FirstOrDefaultAsync();

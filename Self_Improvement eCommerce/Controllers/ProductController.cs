@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Self_Improve_eCommerce.IServices;
 using Self_Improve_eCommerce.Models.DomainObjects;
 using Self_Improve_eCommerce.Models.RequestObjects;
@@ -19,6 +20,11 @@ namespace Self_Improve_eCommerce.Controllers
             this.productService = productService;
         }
 
+        /// <summary>
+        /// Get the list of all the products in the DB
+        /// </summary>
+        /// <returns>All products</returns>
+
         [HttpGet]
         [Route("allProducts")]
         public async Task<IEnumerable<Product>> GetAllProducts()
@@ -28,6 +34,12 @@ namespace Self_Improve_eCommerce.Controllers
             return products;
         }
 
+        /// <summary>
+        /// Adds a product in the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>201</returns>
+
         [HttpPost]
         [Route("addProduct")]
         public async Task<ActionResult> AddProduct(ProductRequestModel model)
@@ -36,7 +48,13 @@ namespace Self_Improve_eCommerce.Controllers
 
             return Created(nameof(this.Created), product);
         }
-
+        /// <summary>
+        /// Deletes a product from the database based on ID
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        /// 
+        [Authorize]
         [HttpDelete]
         [Route("deleteProduct")]
         public async Task<ActionResult> DeleteProductById(int productId)
@@ -47,8 +65,15 @@ namespace Self_Improve_eCommerce.Controllers
 
         }
 
+
+        /// <summary>
+        /// Updates product price based on ID
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="price"></param>
+        /// <returns></returns>
         [HttpPut]
-        [Route("updateProduct")]
+        [Route("updateProductPrice")]
         public async Task<ActionResult> UpdateProductPrice(int productId, float price)
         {
             var updated = await this.productService.UpdateProductPriceAsync(productId, price);
@@ -56,6 +81,25 @@ namespace Self_Improve_eCommerce.Controllers
             return updated == true ? Ok() : BadRequest();
         }
 
+        /// <summary>
+        /// Updates product description based on ID
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("updateProductDescription")]
+        public async Task<ActionResult> UpdateProductDescription(int productId, string description)
+        {
+            var updated = await this.productService.UpdateProductDescriptionAsync(productId, description);
+
+            return updated == true ? Ok() : BadRequest();
+        }
+        /// <summary>
+        /// Gets product by id 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("byId/{productId}")]
         public async Task<Product> GetProductById(int productId)
@@ -65,6 +109,11 @@ namespace Self_Improve_eCommerce.Controllers
             return product;
         }
 
+        /// <summary>
+        /// Gets product by name
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("byName/{productName}")]
         public async Task<Product> GetProductByName(string productName)
