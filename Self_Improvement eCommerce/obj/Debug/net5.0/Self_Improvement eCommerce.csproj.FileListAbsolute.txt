@@ -71,4 +71,4 @@ C:\Users\simti\Desktop\eCommerce WebApp\Self_Improvement eCommerce\obj\Debug\net
 C:\Users\simti\Desktop\eCommerce WebApp\Self_Improvement eCommerce\obj\Debug\net5.0\Self_Improvement eCommerce.pdb
 C:\Users\simti\Desktop\eCommerce WebApp\Self_Improvement eCommerce\obj\Debug\net5.0\Self_Improvement eCommerce.genruntimeconfig.cache
 C:\Users\simti\Desktop\eCommerce WebApp\Self_Improvement eCommerce\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\simti\Desktop\eCommerce WebApp\Self_Improvement eCommerce\obj\Debug\net5.0\Self_Improvement eCommerce.csproj.AssemblyReference.cache
+C:\Users\simti\Desktop\eCommerce WebApp\Self_Improvement eCommerce\obj\Debug\net5.0\Self_Improvement eCommerce.csprojAssemblyReference.cache

@@ -13,6 +13,9 @@ using Self_Improve_eCommerce.IServices;
 using Self_Improve_eCommerce.Models.DomainObjects;
 using Self_Improve_eCommerce.Services;
 using System.Text;
+using Microsoft.OpenApi.Models;
+using System.Security.Claims;
+using System.Text.Json.Serialization;
 
 namespace Self_Improve_eCommerce
 {
@@ -33,8 +36,7 @@ namespace Self_Improve_eCommerce
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            /* services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                 .AddEntityFrameworkStores<SelfImproveDbContext>();*/
+         
 
             services
                 .AddIdentity<User, IdentityRole>(option =>
@@ -47,6 +49,10 @@ namespace Self_Improve_eCommerce
                 }
                 )
                 .AddEntityFrameworkStores<SelfImproveDbContext>();
+
+            //1
+            services.Configure<IdentityOptions>(options =>
+            options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
 
             var appSettingsSection = Configuration.GetSection("ApplicationSettings");
             services.Configure<ApplicationSettings>(appSettingsSection);
@@ -70,11 +76,20 @@ namespace Self_Improve_eCommerce
                    ValidateAudience = false
                };
            });
+
             services.AddControllers();
-            services.AddTransient<IProductService, ProductService>();
+
+            services
+                .AddTransient<IProductService, ProductService>()
+                .AddTransient<IBasketService, BasketService>();
+
+            services.AddHttpContextAccessor();
+                
             services.AddSwaggerGen(x =>
            {
                x.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "ECommerce_SelfImrpove", Version = "v1" });
+
+              
            });
 
           
@@ -108,6 +123,8 @@ namespace Self_Improve_eCommerce
             app.UseSwaggerUI(option =>
             {
                 option.SwaggerEndpoint(swagerOptions.UIEndpoint, swagerOptions.Description);
+
+                
             });
             app.UseHttpsRedirection();
             app.UseStaticFiles();

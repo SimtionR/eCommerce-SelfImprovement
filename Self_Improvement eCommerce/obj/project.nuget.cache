@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2Wi8G6SGZzNWgpTo9DbxJlnl8s1wCSC109PIZNRw36hDhZWeUN+eracXDQOPwgIpAXpYw5rHOpSuSR2VOBkU6A==",
+  "dgSpecHash": "f04H6GKTbVknL2TLg6m5HdoNPxEj5RvJCMU27p9Ttw+YUiaNDcJVDD2dygXJkS2Zxtso/1ZROieRhf+HJ6SADQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\simti\\Desktop\\eCommerce WebApp\\Self_Improvement eCommerce\\Self_Improvement eCommerce.csproj",
   "expectedPackageFiles": [
@@ -116,8 +116,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\simti\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": [
     {
