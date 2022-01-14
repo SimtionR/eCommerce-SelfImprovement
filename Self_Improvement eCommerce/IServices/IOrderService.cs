@@ -11,9 +11,11 @@ namespace Self_Improve_eCommerce.IServices
     public interface IOrderService
     {
         Task<IEnumerable<OrderItem>> GetAllOrderItemsAsync(int orderId);
-        Task<int> CreateOrderAsync(OrderRequestModel orderModel, int addressId, string userId);
-        Task<bool> ChangeOrderAsync(OrderRequestModel orderModel, int orderId);
+        Task<IEnumerable<Order>> GetAllOrdersFromUser(string userId);
+        Task<int> CreateOrderAsync(int addressId, string userId, Basket basket, float discount, string discountName);
+        //Task<bool> ChangeOrderAsync(OrderRequestModel orderModel, int orderId);
         Task<bool> CancelOrderAsync(int orderId);
+        Task<Order> GetOrder(int orderId);
 
     }
 }

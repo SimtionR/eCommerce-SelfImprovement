@@ -16,6 +16,7 @@ namespace Self_Improve_eCommerce.Services
     {
         private readonly SelfImproveDbContext ctx;
         private readonly ILogger<BasketService> logger;
+      
 
         public BasketService(SelfImproveDbContext ctx, ILogger<BasketService> logger)
         {
@@ -96,7 +97,7 @@ namespace Self_Improve_eCommerce.Services
         {
             this.logger.LogInformation($"Called basket with id {userId}");
 
-            var basket = await this.ctx.Baskets.Where(b => b.UserId == userId).FirstOrDefaultAsync();
+            var basket = await this.ctx.Baskets.Include(b=> b.ListOfBasketItems).Where(b => b.UserId == userId).FirstOrDefaultAsync();
 
             return basket;
         }
