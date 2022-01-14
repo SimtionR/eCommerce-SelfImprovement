@@ -23,15 +23,15 @@ namespace Self_Improve_eCommerce.Services
             this.ctx = ctx;
             this.logger = logger;
         }
-        public async Task<int> AddProductToBasketAsync(BasketItemRequestModel basketItemRequestModel, int basketId)
+        public async Task<int> AddProductToBasketAsync(Product product, int basketId, int quantity)
         {
             var basketItem = new BasketItem
             {
-                ImageUrl = basketItemRequestModel.ImageUrl,
-                ProductId = basketItemRequestModel.ProductId,
-                Quantity = basketItemRequestModel.Quantity,
-                ProductName = basketItemRequestModel.ProductName,
-                UnitPrice = basketItemRequestModel.UnitPrice,
+                ImageUrl = product.ImageUrl,
+                ProductId = product.Id,
+                Quantity = quantity,
+                ProductName = product.Name,
+                UnitPrice = product.Price,
                 BasketId = basketId
 
             };

@@ -20,12 +20,13 @@ namespace Self_Improve_eCommerce.Controllers
     {
         private readonly UserManager<User> userManager;
         private readonly IBasketService basketService;
+        private readonly IProductService productService;
 
-        public BasketController(UserManager<User> userManager, IBasketService basketService)
+        public BasketController(UserManager<User> userManager, IBasketService basketService, IProductService productService)
         {
             this.userManager = userManager;
             this.basketService = basketService;
-           
+            this.productService = productService;
         }
 
         [HttpGet]
@@ -44,16 +45,22 @@ namespace Self_Improve_eCommerce.Controllers
 
         [HttpPost]
         [Route("addBasketItem")]
-        public async Task<ActionResult> AddBasketItem (BasketItemRequestModel model)
+        public async Task<ActionResult> AddBasketItem (int productId, int quantity)
         {
             Basket basket = await GettingBasketReadyAsync();
 
+            var product = await this.productService.GetProductByIdAsync(productId);
+
+            if (product !=null && quantity>0 && quantity<50)
+            {
+                
+                var basketItem = await this.basketService.AddProductToBasketAsync(product, basket.Id, quantity);
 
 
-            var basketItem =await  this.basketService.AddProductToBasketAsync(model, basket.Id);
-
-
-            return Created(nameof(this.Created), basketItem);
+                return Created(nameof(this.Created), basketItem);
+            }
+            return BadRequest();
+           
         }
 
         [HttpDelete]

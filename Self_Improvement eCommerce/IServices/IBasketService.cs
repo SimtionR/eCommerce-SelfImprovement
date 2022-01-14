@@ -11,7 +11,7 @@ namespace Self_Improve_eCommerce.IServices
     public interface IBasketService
     {
         Task<IEnumerable<BasketItem>> GetAllBasketItemsAsync(int basketId);
-        Task<int> AddProductToBasketAsync(BasketItemRequestModel basketItemRequestModel, int basketId);
+        Task<int> AddProductToBasketAsync(Product product, int basketId, int quantity);
         Task<bool> ChangeQuantityToBasketItemAsync(int basketItemId, int quantity);
        
         Task<bool> RemoveAllItemsFromBasketAsync(int basketId);
