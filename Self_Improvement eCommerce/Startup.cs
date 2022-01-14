@@ -81,7 +81,8 @@ namespace Self_Improve_eCommerce
 
             services
                 .AddTransient<IProductService, ProductService>()
-                .AddTransient<IBasketService, BasketService>();
+                .AddTransient<IBasketService, BasketService>()
+                .AddTransient<IAddressService, AddressService>();
 
             services.AddHttpContextAccessor();
                 
